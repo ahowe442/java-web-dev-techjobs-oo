@@ -13,6 +13,7 @@ public class Main {
         jobs.add(job1);
         jobs.add(job2);
         jobs.add(job3);
+        /**** TODO: ask why these jobs start at 20?  ****/
 
         for (Job job : jobs){
             System.out.println(job);

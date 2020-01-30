@@ -1,6 +1,6 @@
 package Tests;
 
-import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Test;
 import org.launchcode.techjobs_oo.*;
 
@@ -8,12 +8,12 @@ import static org.hamcrest.CoreMatchers.instanceOf;
 import static org.junit.Assert.*;
 
 public class JobTest {
-//    private Job job1;
-//    private Job job2;
-//    private Job job3;
+    private Job job1;
+    private Job job2;
+    private Job job3;
 
-    @Before
-    public void createJobTestObjects(){
+    @BeforeClass
+    public static void createJobTestObjects(){
         Job job1 = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
         Job job2 = new Job("Web Developer", new Employer("LaunchCode"), new Location("St. Louis"), new PositionType("Front-end developer"), new CoreCompetency("JavaScript"));
         Job job3 = new Job("Ice cream taster", new Employer(""), new Location("Home"), new PositionType("UX"), new CoreCompetency("Taste"));
@@ -38,6 +38,8 @@ public class JobTest {
         Job job2 = new Job("Web Developer", new Employer("LaunchCode"), new Location("St. Louis"), new PositionType("Front-end developer"), new CoreCompetency("JavaScript"));
         assertTrue(job2.getId() - job1.getId() == 1);
     }
+
+
     @Test
     public void testJobConstructorSetsAllFields(){
         Job job1 = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
@@ -76,25 +78,52 @@ public class JobTest {
     }
 
     @Test
-    public void testJobsForEquality(){
+    public void testJobsForEquality() {
         Job job1 = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
         Job job2 = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
         assertEquals(false, job1.getId() == job2.getId());
     }
+
+        //TODO: expectedResult has not been initialized.  Can I just print the Sting outcome for the expected?
+
     @Test
-    public void testToStringMethod(){
-        Job job1 = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
-        String printedResult = "ID:  "+job1.getId()+ "\nName: "+job1.getName()+" \nEmployer: "+job1.getEmployer()+" " +
-                "\nLocation: "+job1.getLocation()+" \nPosition Type: "+job1.getPositionType()+"\nCore Competency: "
+    public void testToString1() {
+        Job job1 = new Job("Product tester", new Employer("ACME"), new Location("Desert"),
+                new PositionType("Quality control"), new CoreCompetency("Persistence"));
+        assertEquals("\n\n", job1.toString());
+    }
+
+    @Test
+    public void stringIncludesALabelAndDataForEachFieldAssertTrue(){
+        Job job1 = new Job("Product tester", new Employer("ACME"), new Location("Desert"),
+                new PositionType("Quality control"), new CoreCompetency("Persistence"));
+        String printedResult = "ID:  " + job1.getId() + "\nName: " + job1.getName() + " \nEmployer: "
+                + job1.getEmployer() + " " + "\nLocation: " + job1.getLocation() + " \nPosition Type: "
+                + job1.getPositionType() + "\nCore Competency: "
                 + job1.getCoreCompetency();
-        //This is not a completed unitTest.
+        //TODO: This is not a completed unitTest.
         // I may need help with this one.
+
         String expectedResult = "ID:  1  \nName: Product tester \nEmployer: ACME \nLocation: Desert \nPosition Type: Quality control \nCore Competency: Persistence";
         assertTrue(printedResult == expectedResult);
-        //expectedResult has not been initialized.  Can I just print the Sting outcome for the expected?
-
-
     }
+
+    @Test
+    public void ifFieldIsEmptyReturnNoDataAvailMessageAssertTrue(){
+        Job job7 = new Job();
+        String printedResult = "ID:  " + "Data not available" +
+                "\nName: " + "Data not available" + " " +
+                "\nEmployer: " + "Data not available" +
+                "\nLocation: " + "Data not available" + " " +
+                "\nPosition Type: " + "Data not available" +
+                "\nCore Competency: " + "Data not available";
+        assertTrue(printedResult == job7.toString());
+    }
+
+
+
+
+}
 //    @Test
 //    public void testInstanceOf2() {
 //        Job job1 = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
@@ -103,4 +132,3 @@ public class JobTest {
 //        assertThat(job1, instanceOf(PositionType.class));
 //        assertThat(job1, instanceOf(CoreCompetency.class));
 //    }
-}
