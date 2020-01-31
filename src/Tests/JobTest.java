@@ -14,9 +14,13 @@ public class JobTest {
 
     @BeforeClass
     public static void createJobTestObjects(){
-        Job job1 = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
-        Job job2 = new Job("Web Developer", new Employer("LaunchCode"), new Location("St. Louis"), new PositionType("Front-end developer"), new CoreCompetency("JavaScript"));
-        Job job3 = new Job("Ice cream taster", new Employer(""), new Location("Home"), new PositionType("UX"), new CoreCompetency("Taste"));
+        Job job1 = new Job("Product tester", new Employer("ACME"), new Location("Desert"),
+                new PositionType("Quality control"), new CoreCompetency("Persistence"));
+        Job job2 = new Job("Web Developer", new Employer("LaunchCode"),
+                new Location("St. Louis"), new PositionType("Front-end developer"),
+                new CoreCompetency("JavaScript"));
+        Job job3 = new Job("Ice cream taster", new Employer(""), new Location("Home"),
+                new PositionType("UX"), new CoreCompetency("Taste"));
 
         //Not sure why this @Before is not working in the @Test methods below?  Ask TF about this.
     }
@@ -34,53 +38,96 @@ public class JobTest {
     }
     @Test
     public void testSettingJobId2(){
-        Job job1 = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
-        Job job2 = new Job("Web Developer", new Employer("LaunchCode"), new Location("St. Louis"), new PositionType("Front-end developer"), new CoreCompetency("JavaScript"));
+        Job job1 = new Job("Product tester",
+                new Employer("ACME"),
+                new Location("Desert"),
+                new PositionType("Quality control"),
+                new CoreCompetency("Persistence"));
+        Job job2 = new Job("Web Developer",
+                new Employer("LaunchCode"),
+                new Location("St. Louis"),
+                new PositionType("Front-end developer"),
+                new CoreCompetency("JavaScript"));
         assertTrue(job2.getId() - job1.getId() == 1);
     }
 
 
     @Test
     public void testJobConstructorSetsAllFields(){
-        Job job1 = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
+        Job job1 = new Job("Product tester",
+                new Employer("ACME"),
+                new Location("Desert"),
+                new PositionType("Quality control"),
+                new CoreCompetency("Persistence"));
         assertEquals("Product tester", job1.getName());
         //I'm not sure what I'm supposed to do here.  I'm not sure what the instructions are asking me to do.
     }
     @Test
     public void testJobConstructorSetsAllFields1(){
-        Job job1 = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
+        Job job1 = new Job("Product tester",
+                new Employer("ACME"),
+                new Location("Desert"),
+                new PositionType("Quality control"),
+                new CoreCompetency("Persistence"));
         assertEquals("ACME", job1.getEmployer().toString());
     }
     @Test
     public void testJobConstructorSetsAllFields2() {
-        Job job1 = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
+        Job job1 = new Job("Product tester",
+                new Employer("ACME"),
+                new Location("Desert"),
+                new PositionType("Quality control"),
+                new CoreCompetency("Persistence"));
 
         assertEquals("Desert", job1.getLocation().toString());
 
     }
     @Test
     public void testJobConstructorSetsAllFields3() {
-        Job job1 = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
+        Job job1 = new Job("Product tester",
+                new Employer("ACME"),
+                new Location("Desert"),
+                new PositionType("Quality control"),
+                new CoreCompetency("Persistence"));
 
     assertEquals("Quality control", job1.getPositionType().getValue());
 
     }
     @Test
     public void testJobConstructorSetsAllFields4() {
-        Job job1 = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
+        Job job1 = new Job("Product tester",
+                new Employer("ACME"),
+                new Location("Desert"),
+                new PositionType("Quality control"),
+                new CoreCompetency("Persistence"));
+
         assertEquals("Persistence", job1.getCoreCompetency().toString());
     }
 
     @Test
     public void testInstanceOf() {
-        Job job1 = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
+        Job job1 = new Job("Product tester",
+                new Employer("ACME"),
+                new Location("Desert"),
+                new PositionType("Quality control"),
+                new CoreCompetency("Persistence"));
+
         assertThat(job1, instanceOf(Job.class));
     }
 
     @Test
     public void testJobsForEquality() {
-        Job job1 = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
-        Job job2 = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
+        Job job1 = new Job("Product tester",
+                new Employer("ACME"),
+                new Location("Desert"),
+                new PositionType("Quality control"),
+                new CoreCompetency("Persistence"));
+        Job job2 = new Job("Product tester",
+                new Employer("ACME"),
+                new Location("Desert"),
+                new PositionType("Quality control"),
+                new CoreCompetency("Persistence"));
+
         assertEquals(false, job1.getId() == job2.getId());
     }
 
@@ -88,42 +135,38 @@ public class JobTest {
 
     @Test
     public void testToString1() {
-        Job job1 = new Job("Product tester", new Employer("ACME"), new Location("Desert"),
-                new PositionType("Quality control"), new CoreCompetency("Persistence"));
-        assertEquals("\n\n", job1.toString());
+        Job job1 = new Job("Product tester",
+                new Employer("ACME"),
+                new Location("Desert"),
+                new PositionType("Quality control"),
+                new CoreCompetency("Persistence"));
+        assertEquals("\n"+
+                "ID:  " + job1.getId() +
+                "\nName: " + job1.getName() +
+                "\nEmployer: " + job1.getEmployer() +
+                "\nLocation: " + job1.getLocation() +
+                "\nPositionType: " + job1.getPositionType() +
+                "\nCoreCompetency: " + job1.getCoreCompetency() +
+                "\n", job1.toString());
     }
 
-    @Test
-    public void stringIncludesALabelAndDataForEachFieldAssertTrue(){
-        Job job1 = new Job("Product tester", new Employer("ACME"), new Location("Desert"),
-                new PositionType("Quality control"), new CoreCompetency("Persistence"));
-        String printedResult = "ID:  " + job1.getId() + "\nName: " + job1.getName() + " \nEmployer: "
-                + job1.getEmployer() + " " + "\nLocation: " + job1.getLocation() + " \nPosition Type: "
-                + job1.getPositionType() + "\nCore Competency: "
-                + job1.getCoreCompetency();
-        //TODO: This is not a completed unitTest.
-        // I may need help with this one.
-
-        String expectedResult = "ID:  1  \nName: Product tester \nEmployer: ACME \nLocation: Desert \nPosition Type: Quality control \nCore Competency: Persistence";
-        assertTrue(printedResult == expectedResult);
-    }
 
     @Test
     public void ifFieldIsEmptyReturnNoDataAvailMessageAssertTrue(){
-        Job job7 = new Job();
-        String printedResult = "ID:  " + "Data not available" +
+        Job job4 = new Job();
+        String printedResult = "ID:  " + 4 +
                 "\nName: " + "Data not available" + " " +
                 "\nEmployer: " + "Data not available" +
                 "\nLocation: " + "Data not available" + " " +
                 "\nPosition Type: " + "Data not available" +
                 "\nCore Competency: " + "Data not available";
-        assertTrue(printedResult == job7.toString());
+        assertTrue(printedResult == job4.toString());
     }
-
-
-
-
 }
+
+
+
+
 //    @Test
 //    public void testInstanceOf2() {
 //        Job job1 = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));

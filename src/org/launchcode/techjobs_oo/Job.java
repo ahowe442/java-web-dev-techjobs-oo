@@ -12,10 +12,7 @@ public class Job {
     private Location location;
     private PositionType positionType;
     private CoreCompetency coreCompetency;
-
-    // TODO: Add two constructors - one to initialize a unique ID and a second to initialize the
-    //  other five fields. The second constructor should also call the first in order to initialize
-    //  the 'id' field.
+//    private Job
 
     public Job() {
         id = nextId;
@@ -31,10 +28,6 @@ public class Job {
         this.coreCompetency = coreCompetency;
     }
 
-
-    // TODO: Add custom equals and hashCode methods. Consider two Job objects "equal" when their id fields
-    //  match.
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -49,8 +42,7 @@ public class Job {
     }
 
 
-    // TODO: Add getters for each field EXCEPT nextId. Add setters for each field EXCEPT nextID
-    //  and id.
+
 
     public int getId() {
         return id;
@@ -61,6 +53,9 @@ public class Job {
     }
 
     public void setName(String name) {
+        if (name == null) {
+            throw new IllegalArgumentException("Data not available");
+        }
         this.name = name;
     }
 
@@ -69,6 +64,9 @@ public class Job {
     }
 
     public void setEmployer(Employer employer) {
+        if (employer == null) {
+            throw new IllegalArgumentException("Data not available");
+        }
         this.employer = employer;
     }
 
@@ -77,6 +75,9 @@ public class Job {
     }
 
     public void setLocation(Location location) {
+        if (location == null) {
+            throw new IllegalArgumentException("Data not available");
+        }
         this.location = location;
     }
 
@@ -85,6 +86,9 @@ public class Job {
     }
 
     public void setPositionType(PositionType positionType) {
+        if (positionType == null) {
+            throw new IllegalArgumentException("Data not available");
+        }
         this.positionType = positionType;
     }
 
@@ -93,6 +97,64 @@ public class Job {
     }
 
     public void setCoreCompetency(CoreCompetency coreCompetency) {
+        if (coreCompetency == null) {
+            throw new IllegalArgumentException("Data not available");
+        }
         this.coreCompetency = coreCompetency;
     }
+
+    @Override
+    public String toString() {
+        return "\n" +
+                "ID:  " + this.id +
+                "\nName: " + this.name +
+                "\nEmployer: " + this.employer +
+                "\nLocation: " + this.location +
+                "\nPositionType: " + this.positionType +
+                "\nCoreCompetency: " + this.coreCompetency +
+                "\n";
+    }
 }
+
+    //TODO: get help with this method.  Why will it not let me create a loop.
+    // if the field is null then I need to return only that portion of the field with
+    // a "Data not available" message.
+
+
+
+
+//    @Override
+//    public String toString() {
+////        for (String field : fields)
+////            if (field != null) {
+//        return "\n" +
+//                "ID:  " + this.id +
+//                "\nName: " + this.name +
+//                "\nEmployer: " + this.employer +
+//                "\nLocation: " + this.location +
+//                "\nPositionType: " + this.positionType +
+//                "\nCoreCompetency: " + this.coreCompetency +
+//                "\n";
+//    }
+//}
+//            } else (field == null){
+//                return "Data not available";
+//            }
+//        return String.valueOf(this.getClass());
+//    }
+//}
+
+        //    @Override
+//    public String toString() {
+//        return "ID:  " + id +
+//                "\nName: " + name +
+//                "\nEmployer: " + employer +
+//                "\nLocation: " + location +
+//                "\nPositionType: " + positionType +
+//                "\nCoreCompetency: " + coreCompetency;
+//        if(name==null || employer==null || location==null || positionType==null || coreCompetency==null){
+//            null== String ""
+//        }
+//    }
+//}
+
