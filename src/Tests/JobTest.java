@@ -145,8 +145,8 @@ public class JobTest {
                 "\nName: " + job1.getName() +
                 "\nEmployer: " + job1.getEmployer() +
                 "\nLocation: " + job1.getLocation() +
-                "\nPositionType: " + job1.getPositionType() +
-                "\nCoreCompetency: " + job1.getCoreCompetency() +
+                "\nPosition Type: " + job1.getPositionType() +
+                "\nCore Competency: " + job1.getCoreCompetency() +
                 "\n", job1.toString());
     }
 

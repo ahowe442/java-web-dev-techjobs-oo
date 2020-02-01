@@ -7,6 +7,7 @@ public class Job {
     private int id;
     private static int nextId = 1;
 
+    private static final String DEFAULT_MESSAGE = "No Data Available";
     private String name;
     private Employer employer;
     private Location location;
@@ -40,8 +41,6 @@ public class Job {
     public int hashCode() {
         return Objects.hash(id);
     }
-
-
 
 
     public int getId() {
@@ -86,9 +85,6 @@ public class Job {
     }
 
     public void setPositionType(PositionType positionType) {
-        if (positionType == null) {
-            throw new IllegalArgumentException("Data not available");
-        }
         this.positionType = positionType;
     }
 
@@ -103,58 +99,90 @@ public class Job {
         this.coreCompetency = coreCompetency;
     }
 
-    @Override
-    public String toString() {
-        return "\n" +
-                "ID:  " + this.id +
-                "\nName: " + this.name +
-                "\nEmployer: " + this.employer +
-                "\nLocation: " + this.location +
-                "\nPositionType: " + this.positionType +
-                "\nCoreCompetency: " + this.coreCompetency +
-                "\n";
-    }
-}
+
+//    @Override
+//    public String toString() {
+//
+//        return String.format("ID:  %s\nName: %s\nEmployer: %s\nLocation: %s\nPosition Type: %s\nCore Competency: %s\n",
+//                name == null ? DEFAULT_MESSAGE : name,
+//                employer == null ? DEFAULT_MESSAGE : employer,
+//                location == null ? DEFAULT_MESSAGE : location,
+//                positionType == null ? DEFAULT_MESSAGE : positionType,
+//                coreCompetency == null ? DEFAULT_MESSAGE : coreCompetency);
+//
+//    }
+//}
+//    @Override
+//    public String toString() {
+//
+//        return String.format("\n" +
+//                "ID: " + id +
+//                "\nName: " + name +
+//                "\nEmployer: " + employer +
+//                "\nLocation: " + location +
+//                "\nPositionType: " + positionType.getValue() +
+//                "\nCoreCompetency: " + coreCompetency +
+//                "\n",
+//                name == null ? DEFAULT_MESSAGE : name,
+//                employer == null ? DEFAULT_MESSAGE : employer,
+//                location == null ? DEFAULT_MESSAGE : location,
+//                positionType == null ? DEFAULT_MESSAGE : positionType,
+//                coreCompetency == null ? DEFAULT_MESSAGE : coreCompetency);
+//
+//        }
+//    }
+
 
     //TODO: get help with this method.  Why will it not let me create a loop.
     // if the field is null then I need to return only that portion of the field with
     // a "Data not available" message.
 
 
+    @Override
+    public String toString() {
+        boolean nullName = (String.valueOf(name) == null || String.valueOf(name) == "null" || String.valueOf(name) == "");
+        boolean nullEmp = (String.valueOf(employer) == null || String.valueOf(employer) == "null" || String.valueOf(employer) == "");
+        boolean nullLocate = (String.valueOf(location) == null || String.valueOf(location) == "null" || String.valueOf(location) == "");
+        boolean nullPoTy = (String.valueOf(positionType) == null || String.valueOf(positionType) == "null" || String.valueOf(positionType) == "");
+        boolean nullCorComp = (String.valueOf(coreCompetency) == null || String.valueOf(coreCompetency) == "null" || String.valueOf(coreCompetency) == "");
+
+        String noData = "No data available";
+
+//        String nameS = name.toString();
+//        String employerS = employer.toString();
+//        String locationS = location.toString();
+//        String positionTypeS = positionType.toString();
+//        String coreCompetencyS = coreCompetency.toString();
+
+        for (Job job : jobs) {
+            if (!nullName) {
+                noData = String.valueOf(name);
+            }
+            if (!nullEmp) {
+                noData = String.valueOf(employer);
+            }
+            if (!nullLocate) {
+                noData = String.valueOf(location);
+            }
+            if (!nullPoTy) {
+                noData = String.valueOf(positionType);
+            }
+            if (!nullCorComp) {
+                noData = String.valueOf(coreCompetency);
+            } else {
+                return "\n" +
+                        "ID:  " + id +
+                        "\nName: " + name +
+                        "\nEmployer: " + employer +
+                        "\nLocation: " + location +
+                        "\nPositionType: " + positionType +
+                        "\nCoreCompetency: " + coreCompetency +
+                        "\n";
+            }
+        }
+        return job;
+    }
+}
 
 
-//    @Override
-//    public String toString() {
-////        for (String field : fields)
-////            if (field != null) {
-//        return "\n" +
-//                "ID:  " + this.id +
-//                "\nName: " + this.name +
-//                "\nEmployer: " + this.employer +
-//                "\nLocation: " + this.location +
-//                "\nPositionType: " + this.positionType +
-//                "\nCoreCompetency: " + this.coreCompetency +
-//                "\n";
-//    }
-//}
-//            } else (field == null){
-//                return "Data not available";
-//            }
-//        return String.valueOf(this.getClass());
-//    }
-//}
-
-        //    @Override
-//    public String toString() {
-//        return "ID:  " + id +
-//                "\nName: " + name +
-//                "\nEmployer: " + employer +
-//                "\nLocation: " + location +
-//                "\nPositionType: " + positionType +
-//                "\nCoreCompetency: " + coreCompetency;
-//        if(name==null || employer==null || location==null || positionType==null || coreCompetency==null){
-//            null== String ""
-//        }
-//    }
-//}
 
