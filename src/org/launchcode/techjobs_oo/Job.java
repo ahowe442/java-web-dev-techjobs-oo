@@ -99,45 +99,6 @@ public class Job {
         this.coreCompetency = coreCompetency;
     }
 
-
-//    @Override
-//    public String toString() {
-//
-//        return String.format("ID:  %s\nName: %s\nEmployer: %s\nLocation: %s\nPosition Type: %s\nCore Competency: %s\n",
-//                name == null ? DEFAULT_MESSAGE : name,
-//                employer == null ? DEFAULT_MESSAGE : employer,
-//                location == null ? DEFAULT_MESSAGE : location,
-//                positionType == null ? DEFAULT_MESSAGE : positionType,
-//                coreCompetency == null ? DEFAULT_MESSAGE : coreCompetency);
-//
-//    }
-//}
-//    @Override
-//    public String toString() {
-//
-//        return String.format("\n" +
-//                "ID: " + id +
-//                "\nName: " + name +
-//                "\nEmployer: " + employer +
-//                "\nLocation: " + location +
-//                "\nPositionType: " + positionType.getValue() +
-//                "\nCoreCompetency: " + coreCompetency +
-//                "\n",
-//                name == null ? DEFAULT_MESSAGE : name,
-//                employer == null ? DEFAULT_MESSAGE : employer,
-//                location == null ? DEFAULT_MESSAGE : location,
-//                positionType == null ? DEFAULT_MESSAGE : positionType,
-//                coreCompetency == null ? DEFAULT_MESSAGE : coreCompetency);
-//
-//        }
-//    }
-
-
-    //TODO: get help with this method.  Why will it not let me create a loop.
-    // if the field is null then I need to return only that portion of the field with
-    // a "Data not available" message.
-
-
     @Override
     public String toString() {
         boolean nullName = (String.valueOf(name) == null || String.valueOf(name) == "null" || String.valueOf(name) == "");
@@ -148,39 +109,30 @@ public class Job {
 
         String noData = "No data available";
 
-//        String nameS = name.toString();
-//        String employerS = employer.toString();
-//        String locationS = location.toString();
-//        String positionTypeS = positionType.toString();
-//        String coreCompetencyS = coreCompetency.toString();
+            if (name.equals("")|| name.equals(null)) {
+                name = noData;
+            }
+            if (employer.getValue().equals("")|| employer.getValue().equals(null)) {
+                employer.setValue("No data available");
+            }
+            if (location.getValue().equals("")|| location.getValue().equals(null)) {
+                location.setValue("No data available");;
+            }
+            if (positionType.getValue().equals("")|| positionType.getValue().equals(null)) {
+                positionType.setValue("No data available");;
+            }
+            if (coreCompetency.getValue().equals("")|| coreCompetency.getValue().equals(null)) {
+                coreCompetency.setValue("No data available");;
+            }
+            return "\n" +
+                    "ID: " + id +
+                    "\nName: " + name +
+                    "\nEmployer: " + employer +
+                    "\nLocation: " + location +
+                    "\nPosition Type: " + positionType +
+                    "\nCore Competency: " + coreCompetency +
+                    "\n";
 
-        for (Job job : jobs) {
-            if (!nullName) {
-                noData = String.valueOf(name);
-            }
-            if (!nullEmp) {
-                noData = String.valueOf(employer);
-            }
-            if (!nullLocate) {
-                noData = String.valueOf(location);
-            }
-            if (!nullPoTy) {
-                noData = String.valueOf(positionType);
-            }
-            if (!nullCorComp) {
-                noData = String.valueOf(coreCompetency);
-            } else {
-                return "\n" +
-                        "ID:  " + id +
-                        "\nName: " + name +
-                        "\nEmployer: " + employer +
-                        "\nLocation: " + location +
-                        "\nPositionType: " + positionType +
-                        "\nCoreCompetency: " + coreCompetency +
-                        "\n";
-            }
-        }
-        return job;
     }
 }
 
