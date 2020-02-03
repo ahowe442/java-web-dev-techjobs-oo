@@ -147,7 +147,7 @@ public class JobTest {
                 new PositionType("Quality control"),
                 new CoreCompetency("Persistence"));
         assertEquals("\n" +
-                "ID:  " + job1.getId() +
+                "ID: " + job1.getId() +
                 "\nName: " + job1.getName() +
                 "\nEmployer: " + job1.getEmployer() +
                 "\nLocation: " + job1.getLocation() +
